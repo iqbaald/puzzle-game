@@ -11,6 +11,7 @@ window.onload = function () {
   startGame();
 
   window.setInterval(function () {
+    crushCandy();
     slideCandy();
     generateCandy();
   }, 100);
@@ -47,7 +48,8 @@ function startGame() {
 }
 
 function dragStart() {
-  //this refers to tile that was clicked on for dragging
+  let dragCount = parseInt(sessionStorage.getItem("dragCount")) + 1;
+  sessionStorage.setItem("dragCount", dragCount.toString());
   currTile = this;
 }
 
@@ -99,19 +101,15 @@ function dragEnd() {
       let otherImg = otherTile.src;
       currTile.src = otherImg;
       otherTile.src = currImg;
-    } else {
-      crushCandy();
-      slideCandy();
-      generateCandy();
     }
   }
 }
 
 function crushCandy() {
+  document.getElementById("score").innerText = score;
   //crushFive();
   //crushFour();
   crushThree();
-  document.getElementById("score").innerText = score;
 }
 
 function crushThree() {
