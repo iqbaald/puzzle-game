@@ -48,8 +48,6 @@ function startGame() {
 }
 
 function dragStart() {
-  let dragCount = parseInt(sessionStorage.getItem("dragCount")) + 1;
-  sessionStorage.setItem("dragCount", dragCount.toString());
   currTile = this;
 }
 
